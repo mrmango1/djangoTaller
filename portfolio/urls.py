@@ -21,11 +21,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("", coreViews.home, name="home"),
+    path("home/", include("home.urls")),
     path("about/", coreViews.about, name="about"),
     path("shop/", include("product.urls")),
     path("contact/", coreViews.contact, name="contact"),
-
     path("admin/", admin.site.urls),
 ]
 
