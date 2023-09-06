@@ -22,7 +22,7 @@ crossorigin=""/>
 integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
 crossorigin=""></script>
 <script>
-  var mymap = L.map('mapid').setView([-23.013104, -43.394365, 13], 13);
+  var mymap = L.map('mapid').setView([-0.244707, -78.518695, 13], 13);
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
@@ -34,7 +34,7 @@ crossorigin=""></script>
       zoomOffset: -1
   }).addTo(mymap);
 
-  L.marker([-23.013104, -43.394365, 13]).addTo(mymap)
+  L.marker([-0.244707, -78.518695, 13]).addTo(mymap)
       .bindPopup("<b>Zay</b> eCommerce Template<br />Location.").openPopup();
 
   mymap.scrollWheelZoom.disable();
