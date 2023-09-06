@@ -27,16 +27,19 @@
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
                 <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                    {% for item in info %}
+                      <i class="fa fa-envelope mx-2"></i>
+                      <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">{{item.email}}</a>
+                    {% endfor %}
+                    {% for item in info %}
+                      <i class="fa fa-phone mx-2"></i>
+                      <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">{{item.phone}}</a>
+                    {% endfor %}
                 </div>
                 <div>
-                    <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
+                  {% for item in social_networks %}
+                    <a class="text-light" href="{{item.url}}" target="_blank" rel="sponsored"><i class="fab fa-{{item.icon}} fa-sm fa-fw me-2"></i></a>
+                  {% endfor %}
                 </div>
             </div>
         </div>
@@ -48,7 +51,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="{% url 'home' %}">
                 Zay
             </a>
 
@@ -130,15 +133,15 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
+                            {{principalInfo.address}}
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                            <a class="text-decoration-none" href="tel:{{principalInfo.phone}}">{{principalInfo.phone}}</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a class="text-decoration-none" href="mailto:{{principalInfo.email}}">{{principalInfo.email}}</a>
                         </li>
                     </ul>
                 </div>
@@ -159,11 +162,10 @@
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
-                        <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                        <li><a class="text-decoration-none" href="{% url 'home' %}">Home</a></li>
+                        <li><a class="text-decoration-none" href="{% url 'about' %}">About Us</a></li>
+                        <li><a class="text-decoration-none" href="{% url 'shop' %}">Products</a></li>
+                        <li><a class="text-decoration-none" href="{% url 'contact' %}">Contact</a></li>
                     </ul>
                 </div>
 
@@ -175,18 +177,11 @@
                 </div>
                 <div class="col-auto me-auto">
                     <ul class="list-inline text-left footer-icons">
+                      {% for item in social_networks %}
                         <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i class="fab fa-facebook-f fa-lg fa-fw"></i></a>
+                            <a class="text-light text-decoration-none" target="_blank" href="{{item.url}}"><i class="fab fa-{{item.icon}} fa-lg fa-fw"></i></a>
                         </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i class="fab fa-twitter fa-lg fa-fw"></i></a>
-                        </li>
-                        <li class="list-inline-item border border-light rounded-circle text-center">
-                            <a class="text-light text-decoration-none" target="_blank" href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
-                        </li>
+                      {% endfor %}
                     </ul>
                 </div>
                 <div class="col-auto">
@@ -205,7 +200,7 @@
                     <div class="col-12">
                         <p class="text-left text-light">
                             Copyright &copy; 2021 Company Name 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                            | Designed by <a rel="sponsored" href="https://github.com/mrmango1" target="_blank">Anderson Grefa</a>
                         </p>
                     </div>
                 </div>
