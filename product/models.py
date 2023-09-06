@@ -28,6 +28,9 @@ class ProductImage(models.Model):
         verbose_name = "imagen"
         verbose_name_plural = "imágenes"
         ordering = ["-created_at"]
+    
+    def __str__(self):
+        return self.description
 
 class Color(models.Model):
     name = models.CharField(max_length=200, verbose_name="Color")
@@ -73,7 +76,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200, verbose_name="Nombre")
     description = models.TextField(verbose_name="Descripción")
     spects = models.TextField(verbose_name="Especificaciones")
-    brand = models.CharField(max_length=200, verbose_name="Marca")
+    brand = models.ForeignKey(Brand, verbose_name="Marca", on_delete=models.CASCADE)
     category = models.ManyToManyField("Category", verbose_name="Categorías")
     price = models.FloatField(verbose_name="Precio")
     stock = models.IntegerField(verbose_name="Stock")
