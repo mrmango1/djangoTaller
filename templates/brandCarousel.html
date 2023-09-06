@@ -25,11 +25,11 @@
                           <!--Slides-->
                           <div class="carousel-inner product-links-wap" role="listbox">
                             {% for list in brands %}
-                              <div class="carousel-item active">
+                              <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
                                   <div class="row">
                                     {% for item in list %}
                                     <div class="col-3 p-md-5">
-                                      <a href="#"><img class="img-fluid brand-img" src="{{item.img.url}}" alt="Brand Logo"></a>
+                                      <a href="{% url 'shopByBrand' item.id %}"><img class="img-fluid brand-img" src="{{item.img.url}}" alt="Brand Logo"></a>
                                     </div>
                                     {% endfor %}
                                   </div>
