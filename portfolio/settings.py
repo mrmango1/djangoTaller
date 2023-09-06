@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "core",
     "product",
     "home",
+    "contact"
 ]
 
 MIDDLEWARE = [
@@ -65,7 +66,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "core.processor.info"
+                "core.processor.info",
+                "product.processor.brand"
             ],
         },
     },
@@ -132,3 +134,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '08fe48fc61c946'
+EMAIL_HOST_PASSWORD = 'd3a31d98d56f36'
+EMAIL_PORT = '2525'
