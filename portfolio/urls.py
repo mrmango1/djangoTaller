@@ -24,7 +24,7 @@ urlpatterns = [
     path("home/", include("home.urls")),
     path("about/", coreViews.about, name="about"),
     path("shop/", include("product.urls")),
-    path("contact/", coreViews.contact, name="contact"),
+    path("contact/", include("contact.urls")),
     path("admin/", admin.site.urls),
 ]
 
