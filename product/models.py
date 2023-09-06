@@ -96,8 +96,9 @@ class Product(models.Model):
         return self.name
 
 class Clothes(Product):
-    size = models.ManyToManyField("Size", verbose_name="Tallas")
-    color = models.ManyToManyField("Color", verbose_name="Colores")
+    sizes = models.ManyToManyField("Size", verbose_name="Tallas")
+    colors = models.ManyToManyField("Color", verbose_name="Colores")
+    gender = models.CharField(max_length=100, verbose_name="Género", choices=(("M", "Male"), ("F", "Female"), ("U", "Unisex")), default="U")
 
     class Meta:
         verbose_name = "ropa"
